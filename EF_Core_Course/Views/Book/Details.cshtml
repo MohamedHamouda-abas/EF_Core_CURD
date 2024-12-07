@@ -1,0 +1,70 @@
+﻿@model EF_Core_Course_Model.Models.BookDetila
+@{
+    var title = "Create Book Details";
+}
+<form method="post">
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Book_Id" />
+        <input type="hidden" asp-for="BookDetila_Id" />
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8 pt-4">
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="Book.Titel"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Book.Titel" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="Chapter"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Chapter" class="form-control" />
+                    <span asp-validation-for="Chapter" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="Pages"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Pages" class="form-control" />
+                    <span asp-validation-for="Pages" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="BookType"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="BookType" class="form-control" />
+                    <span asp-validation-for="BookType" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row py-2">
+                <div class="col-4 offset-4">
+                    @if (Model.Book == null || Model.Book.BookId != 0 || Model.BookDetila_Id != 0)
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Create</button>
+                    }
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}
